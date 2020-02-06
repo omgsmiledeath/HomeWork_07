@@ -46,5 +46,7 @@ namespace HomeWork_07
             this.WriteDate = writeDate;
             this.RecordOwner = recordOwner;
         }
+
+        
     }
 }

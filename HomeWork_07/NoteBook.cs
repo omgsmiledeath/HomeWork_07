@@ -17,6 +17,13 @@ namespace HomeWork_07
             SaveAll //Сохранить в новом
         }
         /// <summary>
+        /// Поле показывающее были ли сохранены изменения
+        /// </summary>
+        private bool changes;
+
+        private bool newBook;
+
+        /// <summary>
         /// Массив записей 
         /// </summary>
         private List<Record> Records { get; set; }
@@ -37,6 +44,8 @@ namespace HomeWork_07
         {
             this.Records = new List<Record>();
             this.titles = new string[0];
+            this.changes = false;
+            this.newBook = true;
         }
 
         /// <summary>
@@ -46,8 +55,10 @@ namespace HomeWork_07
         public NoteBook (string path):
             this()
         {
+            this.newBook = false;
             this.path = path;
             this.Load();
+            
         }
 
         /// <summary>
@@ -59,19 +70,46 @@ namespace HomeWork_07
         }
 
         /// <summary>
+        /// Метод для добавления в существующую книгу записей из файла
+        /// </summary>
+        /// <param name="path"></param>
+        public void InputRecords (string path)
+        {
+
+        }
+        /// <summary>
         /// Метод сохраняющий записную книгу
         /// </summary>
         /// <param name="wm">Переменная выбора способа сохранения</param>
         private void Save(WriteMode wm)
         {
-            if(wm == WriteMode.Save)
+            if(wm == 0)
             {
+                if(this.newBook == true) //если книга была создана без загрузки из файла ,проверка чтоб указать куда сохранять данные  
+                {
 
+                }
+                changes = true; 
             }
             else
             {
-
+                changes = true;
             }
+        }
+
+        public void Add(Record record)
+        {
+
+        }
+
+        public void Edit(uint num)
+        {
+
+        }
+
+        public void Delete(uint num)
+        {
+
         }
     }
 }

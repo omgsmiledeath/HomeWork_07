@@ -1,6 +1,6 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -54,7 +54,29 @@ namespace HomeWork_07
         /// </summary>
         private void Load()
         {
+            
+        }
 
+        public void Save(Library.WriteMode wm)
+        {
+            
+            {
+                if ((wm == 1)||(this.newBook == true))
+                {
+                    using(StreamWriter sw = new StreamWriter())
+                    newBook = false;
+                    changes = true;
+                    sw.WriteLine(titles);
+                    foreach(var e in Records)
+                        {
+                        
+                        }
+                }
+                else
+                {
+                    changes = true;
+                }
+            }
         }
 
         /// <summary>

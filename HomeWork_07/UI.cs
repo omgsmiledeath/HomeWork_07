@@ -37,21 +37,7 @@ namespace HomeWork_07
         /// Метод сохраняющий записную книгу
         /// </summary>
         /// <param name="wm">Переменная выбора способа сохранения</param>
-        private void Save(Library.WriteMode wm)
-        {
-            if (wm == 0)
-            {
-                if (this.newBook == true) //если книга была создана без загрузки из файла ,проверка чтоб указать куда сохранять данные  
-                {
-
-                }
-                changes = true;
-            }
-            else
-            {
-                changes = true;
-            }
-        }
+        
 
         public void Add(Record record)
         {

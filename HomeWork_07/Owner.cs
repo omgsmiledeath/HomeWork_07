@@ -22,7 +22,7 @@ namespace HomeWork_07
         /// </summary>
         /// <param name="name">Имя пользователя</param>
         /// <param name="dateofbirth">Дата рождения</param>
-        public Owner (string name,DateTime dateofbirth)
+        public Owner (string name,DateTime dateofbirth)  
         {
             this.Name = name;
             this.DateOfBirth = dateofbirth;

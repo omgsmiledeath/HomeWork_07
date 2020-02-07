@@ -37,11 +37,12 @@ namespace HomeWork_07
             //    fi = new FileInfo(path);
             //} while (!fi.Exists);
 
-            Menu menu = new Menu(path, true);
-            menu.notebook.Add(new Record("Первая запись", "Важно", "Написал свою первую запись в записной книге , я молодец", new DateTime(2020, 02, 07), "Олег Петров"));
-            menu.notebook.Add(new Record("Первая запись", "Важно", "Написал свою первую запись в записной книге , я молодец", new DateTime(2020, 02, 07), "Олег Петров"));
-            menu.notebook.Add(new Record("Первая запись", "Важно", "Написал свою первую запись в записной книге , я молодец", new DateTime(2020, 02, 07), "Олег Петров"));
+            Menu menu = new Menu(path, false);
+
+           // menu.notebook.Add(new Record("1", "1", "1", new DateTime(2020, 02, 02), "1"));
+//            menu.Import();
             menu.SaveInFile();
+            Console.ReadKey();
         }
     }
 }

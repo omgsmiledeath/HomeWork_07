@@ -58,7 +58,12 @@ namespace HomeWork_07
         public void InputData (List<Record> inputData)
         {
             foreach (var e in inputData)
+            {
+                Console.WriteLine(e);
                 Records.Add(e);
+                Console.WriteLine(e);
+            }
+                
         }
         /// <summary>
         /// Свойство для экспорта всех записей в книге

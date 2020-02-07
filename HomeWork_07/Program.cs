@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,8 +28,20 @@ namespace HomeWork_07
             /// - Импорт записей по выбранному диапазону дат
             /// - Упорядочивания записей ежедневника по выбранному полю
             #endregion
+            string path=@"c:\temp\temp.csv";
+            //FileInfo fi;
+            //do
+            //{
+            //    Console.WriteLine("Введите путь по которому сохранится записная книга");
+            //    path = Console.ReadLine();
+            //    fi = new FileInfo(path);
+            //} while (!fi.Exists);
 
-            
+            Menu menu = new Menu(path, true);
+            menu.notebook.Add(new Record("Первая запись", "Важно", "Написал свою первую запись в записной книге , я молодец", new DateTime(2020, 02, 07), "Олег Петров"));
+            menu.notebook.Add(new Record("Первая запись", "Важно", "Написал свою первую запись в записной книге , я молодец", new DateTime(2020, 02, 07), "Олег Петров"));
+            menu.notebook.Add(new Record("Первая запись", "Важно", "Написал свою первую запись в записной книге , я молодец", new DateTime(2020, 02, 07), "Олег Петров"));
+            menu.SaveInFile();
         }
     }
 }

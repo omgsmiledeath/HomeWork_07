@@ -16,7 +16,7 @@ namespace HomeWork_07
         /// <summary>
         /// Поле хранящее экземлпяр записной книги
         /// </summary>
-        private NoteBook notebook { get; }
+        public NoteBook notebook { get; }
         /// <summary>
         /// Поле показывающее были ли сохранены изменения
         /// </summary>
@@ -41,7 +41,19 @@ namespace HomeWork_07
 
         public void SaveInFile()
         {
-
+            using (StreamWriter sw = new StreamWriter(path,false,Encoding.UTF32))
+            {
+                foreach(var e in notebook.ExportData())
+                {
+                    string temp = String.Format("{0},{1},{2},{3},{4}",
+                        e.Title,
+                     e.Relevance,
+                     e.Text,
+                     e.WriteDate,
+                     e.RecordOwner);
+                    sw.WriteLine(temp);
+                }
+            }
         }
         
         public List<Record> inputRecords ()

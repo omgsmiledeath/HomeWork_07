@@ -28,7 +28,7 @@ namespace HomeWork_07
         /// <summary>
         /// Пользователь оставивший запись 
         /// </summary>
-        public Owner RecordOwner { get;}
+        public string RecordOwner { get;}
 
         /// <summary>
         /// Конструктор создающий запись
@@ -38,7 +38,7 @@ namespace HomeWork_07
         /// <param name="text">Текст записи</param>
         /// <param name="writeDate">Дата записи</param>
         /// <param name="recordOwner">Пользователь оставивший</param>
-        public Record (string title, string relevance, string text, DateTime writeDate, Owner recordOwner )
+        public Record (string title, string relevance, string text, DateTime writeDate, string recordOwner )
         {
             this.Title = title;
             this.Relevance = relevance;

@@ -28,29 +28,90 @@ namespace HomeWork_07
             /// - Импорт записей по выбранному диапазону дат
             /// - Упорядочивания записей ежедневника по выбранному полю
             #endregion
-            string path=@"c:\temp\temp.csv";
-            //FileInfo fi;
-            //do
-            //{
-            //    Console.WriteLine("Введите путь по которому сохранится записная книга");
-            //    path = Console.ReadLine();
-            //    fi = new FileInfo(path);
-            //} while (!fi.Exists);
+            Console.WriteLine("Вас приветствует записная книжка v0.123 (beta) ранний доступ");
 
-            Menu menu = new Menu(path, false);
+            Console.WriteLine($"Выберите режим запуска книги:\n 1.Новая книга (по умолчанию хранится в"+ @"(c:\temp\NoteBook3000.csv)"+"\n 2.Готовая книга (укажите полный путь до нее)");
+            int choise;
+            bool newBook;
+
+            string path = firstPage(out newBook);
+            Menu menu = new Menu(path, newBook);
+
+            bool exit = false;
+            while(exit==false)
+            {
+                Console.Clear();
+                Console.WriteLine($"Выберите пункт меню:\n 1.Работа с записями\n 2.Загрузка записей\n 3.Сохранение записей\n 4.Сортировка записей\n 5.Вывод всей записной книги на экран\n   0.Выход");
+
+                Int32.TryParse(Console.ReadLine(), out choise);
+
+                switch(choise)
+                {
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    case 0:
+                        exit = true;
+                        break;
+
+                    default:
+                        
+                        break;
+
+                }
+
+            }
 
 
-           // menu.AddRecord();
-           // menu.Import();
-            menu.SaveInFile();
-            menu.PrintNBinConsole();
-            menu.SortRecords();
-            //menu.EditRecord();
-            ////menu.DeleteRecord();
-            menu.PrintNBinConsole();
-            menu.SaveInAnotherFile(@"C:\temp\save2.csv");
+
+           //// menu.AddRecord();
+           //// menu.Import();
+           // menu.SaveInFile();
+           // menu.PrintNBinConsole();
+           // menu.SortRecords();
+           // //menu.EditRecord();
+           // ////menu.DeleteRecord();
+           // menu.PrintNBinConsole();
+           // menu.SaveInAnotherFile(@"C:\temp\save2.csv");
             
             Console.ReadKey();
+        }
+
+        static string firstPage(out bool newBook)
+        {
+            int choise;
+            string path;
+            newBook = true;
+            while (true)
+            {
+                Int32.TryParse(Console.ReadLine(), out choise);
+                if (choise == 1)
+                {
+                    path = @"c:\temp\NoteBook3000.csv";
+                    break;
+                }
+                if (choise == 2)
+                {
+                    Console.Write("Введите путь до файла:");
+                    path = Console.ReadLine();
+                    newBook = false;
+                    break;
+                }
+                else Console.WriteLine("Ввод не опознан");
+            }
+            return path;
+        }
+
+        static void MainPage(Menu menu)
+        {
+
         }
     }
 }

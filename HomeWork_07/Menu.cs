@@ -39,6 +39,7 @@ namespace HomeWork_07
                 this.changes = true;
                 this.path = path;
                 this.notebook = new NoteBook(this.newBook);
+                SaveInFile();
             }
             else
             {

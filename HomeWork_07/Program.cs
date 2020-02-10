@@ -37,23 +37,18 @@ namespace HomeWork_07
             //    fi = new FileInfo(path);
             //} while (!fi.Exists);
 
-            Menu menu = new Menu(path, true);
+            Menu menu = new Menu(path, false);
 
-            menu.notebook.Add(new Record("досвидания", "не очень", "бла бла бла бла бла ", new DateTime(2011, 02, 02), "Вася"));
-            menu.notebook.Add(new Record("Привет", "очень", "бла бла", new DateTime(2018, 02, 24), "Петя"));
-            menu.notebook.Add(new Record("Просто запись", "важное", "бла бла  бла", new DateTime(2018, 12, 08), "Карл"));
-            menu.notebook.Add(new Record("вот", "пофиг", "бла бла бла бла", new DateTime(2004, 01, 01), "123"));
-            
-            //menu.Import();
+
+           // menu.AddRecord();
+           // menu.Import();
             menu.SaveInFile();
-            // menu.notebook.Add(new Record("Привет", "очень", "удали меня", new DateTime(2020, 02, 02), "1"));
-            //menu.notebook.Add(new Record("Привет", "очень", "бла бла бла", new DateTime(2020, 02, 02), "1"));
             menu.PrintNBinConsole();
             menu.SortRecords();
             //menu.EditRecord();
             ////menu.DeleteRecord();
             menu.PrintNBinConsole();
-            menu.SaveInAnotherFile(@"C:\temp\save.csv");
+            menu.SaveInAnotherFile(@"C:\temp\save2.csv");
             
             Console.ReadKey();
         }

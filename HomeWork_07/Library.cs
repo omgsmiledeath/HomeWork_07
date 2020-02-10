@@ -7,17 +7,16 @@ using System.Text;
 
 namespace HomeWork_07
 {
-     struct Library
+    public  struct Library
     {
 
-        /// <summary>
-        /// Перечисление метода записи
-        /// </summary>
-        public enum WriteMode
+        public enum Revelance
         {
-            Save,  //Сохранить в текущем файле
-            SaveAll //Сохранить в новом
+            Low,
+            Normal,
+            Hight
         }
+
 
         
 

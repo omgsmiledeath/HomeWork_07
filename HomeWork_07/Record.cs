@@ -15,7 +15,7 @@ namespace HomeWork_07
         /// <summary>
         /// Важность
         /// </summary>
-        public string Relevance { get; set; }
+        public int Relevance { get; set; }
         /// <summary>
         /// Текст записи
         /// </summary>
@@ -38,7 +38,7 @@ namespace HomeWork_07
         /// <param name="text">Текст записи</param>
         /// <param name="writeDate">Дата записи</param>
         /// <param name="recordOwner">Пользователь оставивший</param>
-        public Record (string title, string relevance, string text, DateTime writeDate, string recordOwner )
+        public Record (string title, int relevance, string text, DateTime writeDate, string recordOwner )
         {
             this.Title = title;
             this.Relevance = relevance;

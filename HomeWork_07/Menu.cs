@@ -141,12 +141,38 @@ namespace HomeWork_07
                 {
                     string[] temp = sr.ReadLine().Split(';');
 
-                    result.Add(new Record(temp[0], temp[1], temp[2], Convert.ToDateTime(temp[3]), temp[4]));
+                    result.Add(new Record(temp[0],Int32.Parse(temp[1]), temp[2], Convert.ToDateTime(temp[3]), temp[4]));
                 }
             }
             return result;
         }
 
+        public void AddRecord()
+        {
+            string tempTitle = String.Empty;
+            int tempRel = 0;
+            string tempText = String.Empty;
+            DateTime tempDateTime;
+            string owner = String.Empty;
+
+            Console.Write("Введите заголовок записи: ");
+            tempTitle = Console.ReadLine();
+
+            Console.Write("Введите важность записи от 0 до 10: ");
+            Int32.TryParse(Console.ReadLine(), out tempRel);
+
+            Console.Write("Введите текст записи: ");
+            tempText = Console.ReadLine();
+
+            Console.Write("Введите дату записи(пример 1900.01.01): ");
+            tempDateTime = Convert.ToDateTime(Console.ReadLine());
+
+            Console.Write("Введие имя: ");
+            owner = Console.ReadLine();
+
+            notebook.Add(new Record(tempTitle, tempRel, tempText, tempDateTime, owner));
+
+;        }
 
         public void PrintNBinConsole()
         {
@@ -235,7 +261,7 @@ namespace HomeWork_07
                                             break;
                                         case 2:
                                             Console.WriteLine("Введите новую важность для записи:");
-                                            tempRecord.Relevance = Console.ReadLine();
+                                            tempRecord.Relevance = Int32.Parse(Console.ReadLine());
                                             break;
                                         case 3:
                                             Console.WriteLine("Введите новый текст записи:");

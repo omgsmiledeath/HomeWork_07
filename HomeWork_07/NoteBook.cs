@@ -55,13 +55,18 @@ namespace HomeWork_07
         /// Свойство по загрузке массва записей
         /// </summary>
         /// <param name="inputData"></param>
-        public void InputData (List<Record> inputData)
+        public void InputData (List<Record> input)
         {
-            foreach (var e in inputData)
+            foreach (var e in input)
             {
                 Records.Add(e);
             }
                 
+        }
+
+        public void ClearRecord()
+        {
+            Records.Clear();
         }
         /// <summary>
         /// Свойство для экспорта всех записей в книге
@@ -69,7 +74,14 @@ namespace HomeWork_07
         /// <returns></returns>
         public List<Record> ExportData()
         {
-            return Records;
+            List<Record> result = new List<Record>();
+            result.AddRange(Records.ToArray());
+            return result ;
+        }
+
+        public Record getRecord(int counter)
+        {
+            return Records[counter];
         }
     }
 }

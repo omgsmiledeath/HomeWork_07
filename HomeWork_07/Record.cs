@@ -28,7 +28,7 @@ namespace HomeWork_07
         /// <summary>
         /// Пользователь оставивший запись 
         /// </summary>
-        public string RecordOwner { get;}
+        public string RecordOwner { get; set; }
 
         /// <summary>
         /// Конструктор создающий запись
@@ -46,6 +46,7 @@ namespace HomeWork_07
             this.WriteDate = writeDate;
             this.RecordOwner = recordOwner;
         }
+        
 
         
     }

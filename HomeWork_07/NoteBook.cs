@@ -59,9 +59,7 @@ namespace HomeWork_07
         {
             foreach (var e in inputData)
             {
-                Console.WriteLine(e);
                 Records.Add(e);
-                Console.WriteLine(e);
             }
                 
         }

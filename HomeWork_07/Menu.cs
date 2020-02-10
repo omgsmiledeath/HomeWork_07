@@ -35,7 +35,7 @@ namespace HomeWork_07
             this.newBook = newBook;
             if (newBook)
             {
-                this.Titles = new string[]{ "Заголовок","Важность","Текст записки","Дата записи","Владелец записи"};
+                this.Titles = new string[]{"Заголовок","Важность","Текст записки","Дата записи","Владелец записи"};
                 this.changes = true;
                 this.path = path;
                 this.notebook = new NoteBook(this.newBook);
@@ -53,25 +53,56 @@ namespace HomeWork_07
 
         public void SaveInFile()
         {            
-                using (StreamWriter sw = new StreamWriter(path, false, Encoding.UTF8))
+            using (StreamWriter sw = new StreamWriter(path, false, Encoding.UTF8))
+            {
+                sw.WriteLine($"{Titles[0]};{Titles[1]};{Titles[2]};{Titles[3]:yyyy MM dd};{Titles[4]}");
+                foreach (var e in notebook.ExportData())
                 {
-                sw.WriteLine($"{Titles[0],7};{Titles[1],8};{Titles[2],15};{Titles[3]:yyyy MM dd,8};{Titles[4]}");
-                    foreach (var e in notebook.ExportData())
-                    {
-                        string temp = String.Format("{0};{1};{2};{3};{4};",
-                            e.Title,
-                         e.Relevance,
-                         e.Text,
-                         e.WriteDate,
-                         e.RecordOwner);
-                        sw.WriteLine(temp);
-                    }
+                string temp = String.Format("{0};{1};{2};{3};{4};",
+                    e.Title,
+                    e.Relevance,
+                    e.Text,
+                    e.WriteDate,
+                    e.RecordOwner);
+                sw.WriteLine(temp);
                 }
+            }
+        }
+
+
+        public void SaveInAnotherFile(string path)
+        {            
+            while(true)
+            if(File.Exists(path))
+                {
+                Console.WriteLine("По указанному пути есть файл , хотите перезаписать?");
+                    if(Console.ReadLine() =="да")
+                    {
+                        createDir(path);
+                        break;
+                    }
+                    else
+                        {
+                        Console.WriteLine("Ввод не опознан");
+                        }
+                }
+            else
+            {
+                    createDir(path);
+                    break;
+            }
+        }
+
+        private void createDir(string path)
+        {
+            this.path = path;
+            FileInfo fi = new FileInfo(this.path);
+            DirectoryInfo di = new DirectoryInfo(fi.DirectoryName);
+            di.Create();
+            using(StreamWriter sr = fi.CreateText());
+            SaveInFile();
         }
         
-
-
-
         public void Import ()
         {
             string path = String.Empty;
@@ -110,5 +141,20 @@ namespace HomeWork_07
                 return result;
         }
 
+
+        public void PrintNBinConsole()
+        {
+            int count = 1;
+            foreach(var e in this.notebook.ExportData())
+            {    
+                Console.WriteLine($"Запись номер {count++}");
+                Console.Write($"{Titles[0]}: {e.Title} \n");
+                Console.Write($"{Titles[1]}: {e.Relevance} \n");
+                Console.Write($"{Titles[2]}: {e.Text} \n");
+                Console.Write($"{Titles[3]}: {e.WriteDate} \n");
+                Console.Write($"{Titles[4]}: {e.RecordOwner} \n");
+                Console.WriteLine("-------------------------------------------");
+            }
+        }
     }
 }

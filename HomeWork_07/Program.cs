@@ -39,9 +39,15 @@ namespace HomeWork_07
 
             Menu menu = new Menu(path, false);
 
-           // menu.notebook.Add(new Record("1", "1", "1", new DateTime(2020, 02, 02), "1"));
-//            menu.Import();
-            menu.SaveInFile();
+            menu.notebook.Add(new Record("досвидания", "очень", "бла бла бла", new DateTime(2020, 02, 02), "1"));
+            menu.notebook.Add(new Record("Привет", "очень", "бла бла бла", new DateTime(2020, 02, 02), "1"));
+            menu.notebook.Add(new Record("Привет", "очень", "бла бла бла", new DateTime(2020, 02, 02), "1"));
+            menu.notebook.Add(new Record("Привет", "очень", "бла бла бла", new DateTime(2020, 02, 02), "1"));
+            menu.notebook.Add(new Record("Привет", "очень", "бла бла бла", new DateTime(2020, 02, 02), "1"));
+            //menu.Import();
+            //menu.SaveInFile();
+            menu.SaveInAnotherFile(@"C:\temp\save.csv");
+            menu.PrintNBinConsole();
             Console.ReadKey();
         }
     }

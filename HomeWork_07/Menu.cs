@@ -10,7 +10,9 @@ namespace HomeWork_07
 {
     struct Menu
     {
-
+        /// <summary>
+        /// Массив заголовков для пунктов записной книги
+        /// </summary>
         private string[] Titles;
 
         /// <summary>
@@ -31,7 +33,11 @@ namespace HomeWork_07
         private bool newBook { get; set; }
 
         
-
+        /// <summary>
+        /// Конструктор структуры
+        /// </summary>
+        /// <param name="path">Путь до файла где будут хранится записи</param>
+        /// <param name="newBook">Новая книга или нет</param>
         public Menu(string path, bool newBook)
         {
             this.newBook = newBook;
@@ -54,6 +60,9 @@ namespace HomeWork_07
 
         }
 
+        /// <summary>
+        /// Свойство сохраняет записи по актуальному пути
+        /// </summary>
         public void SaveInFile()
         {
             using (StreamWriter sw = new StreamWriter(path, false, Encoding.UTF8))
@@ -72,7 +81,11 @@ namespace HomeWork_07
             }
         }
 
-
+        /// <summary>
+        /// Свойство которое проверяет условия для записи по указанному пути с возможность перезаписи
+        /// </summary>
+        /// <param name="path">Путь до места где будут сохранен файл</param>
+        /// <param name="apend">Параметр указывающий будет ли перезапись конечного файла</param>
         public void SaveInAnotherFile(string path,bool apend=false)
         {
             while (true)
@@ -102,7 +115,11 @@ namespace HomeWork_07
                     break;
                 }
         }
-
+        /// <summary>
+        /// Свойство создающее директорию и файл
+        /// </summary>
+        /// <param name="path">Путь до файла</param>
+        /// <param name="append">Возможно ли перезаписать</param>
         private void createDir(string path,bool append = false)
         {
             this.path = path;
@@ -116,6 +133,12 @@ namespace HomeWork_07
             SaveInFile();
         }
 
+        /// <summary>
+        /// Свойство для проверки возможнсти импорта записей
+        /// </summary>
+        /// <param name="met">1 или 2 (1 простой импорт) 2 (импорт с условием по дате)</param>
+        /// <param name="min">Минимально допустимая дата для импорта с условием</param>
+        /// <param name="max">Максимально допустимая дата дял импорта с условием</param>
         public void Import(int met,DateTime? min = null  ,DateTime? max = null)
         {
             string path = String.Empty;
@@ -142,7 +165,13 @@ namespace HomeWork_07
 
 
 
-
+        /// <summary>
+        /// Свойство импортирущее записи по указанному пути с опцией по дате создания
+        /// </summary>
+        /// <param name="path">путь до файла</param>
+        /// <param name="min">Минимально допустимая дата для импорта с условием</param>
+        /// <param name="max">Максимально допустимая дата дял импорта с условием</param>
+        /// <returns>Массив конкретных записей из файла</returns>
         private List<Record> inputRecordsWithOption(string path,DateTime? min ,DateTime? max)
         {
             List<Record> result = new List<Record>();
@@ -159,6 +188,11 @@ namespace HomeWork_07
             return result;
         }
 
+        /// <summary>
+        /// Свойство которое импортирует записи по указанному пути
+        /// </summary>
+        /// <param name="path">Путь до файла</param>
+        /// <returns>Все записи из файла</returns>
         private List<Record> inputRecords(string path)
         {
             List<Record> result = new List<Record>();
@@ -175,6 +209,9 @@ namespace HomeWork_07
             return result;
         }
 
+        /// <summary>
+        /// Свойство которое добавляет запись в книгу
+        /// </summary>
         public void AddRecord()
         {
             string tempTitle = String.Empty;
@@ -202,6 +239,9 @@ namespace HomeWork_07
 
 ;        }
 
+        /// <summary>
+        /// Свойство выводящее на экран всю записную книгу
+        /// </summary>
         public void PrintNBinConsole()
         {
             int count = 1;
@@ -217,6 +257,10 @@ namespace HomeWork_07
             }
         }
 
+        /// <summary>
+        /// Свойство выводящее на экран только выбранную запись из книги
+        /// </summary>
+        /// <param name="count">Номер записи</param>
         public void PrintRecordinConsole(int count)
         {
             Record temp = notebook.getRecord(count);
@@ -229,6 +273,9 @@ namespace HomeWork_07
             Console.WriteLine("-------------------------------------------");
         }
 
+        /// <summary>
+        /// Свойство удаляющее запись из книги
+        /// </summary>
         public void DeleteRecord()
         {
             int count;
@@ -249,7 +296,9 @@ namespace HomeWork_07
                 }
             }
         }
-
+        /// <summary>
+        /// Свойство для редактирования записи в книге
+        /// </summary>
         public void EditRecord()
         {
             int count;
@@ -313,6 +362,9 @@ namespace HomeWork_07
             }
         }
 
+        /// <summary>
+        /// Свойство для сортировки книги по выбранному пункту
+        /// </summary>
         public void SortRecords()
         {
             List<Record> temp = new List<Record>();

@@ -38,7 +38,11 @@ namespace HomeWork_07
             MainPage(menu);
 
         }
-
+        /// <summary>
+        /// Начальный выбор 
+        /// </summary>
+        /// <param name="newBook">Параметр для определения новая книга или нет</param>
+        /// <returns>Путь к файлу</returns>
         static string firstPage(out bool newBook)
         {
             int choise;
@@ -63,7 +67,10 @@ namespace HomeWork_07
             }
             return path;
         }
-
+        /// <summary>
+        /// Метод который выводит на экран главное меню
+        /// </summary>
+        /// <param name="menu">экемлпяр структуры которая хранит в себе все записи</param>
         static void MainPage(Menu menu)
         {
             
@@ -107,7 +114,10 @@ namespace HomeWork_07
 
             }
         }
-
+        /// <summary>
+        /// Метод вывода на экран меню для действий с записями
+        /// </summary>
+        /// <param name="menu">экемлпяр структуры которая хранит в себе все записи</param>
         static void RecordEditPage(Menu menu)
         {
             Console.Clear();
@@ -142,7 +152,10 @@ namespace HomeWork_07
                 }
             }
         }
-
+        /// <summary>
+        /// Метод выводящий на экран меню для загрузки данных
+        /// </summary>
+        /// <param name="menu">экемлпяр структуры которая хранит в себе все записи</param>
         static void LoadRecordPage(Menu menu)
         {
             int choise;
@@ -178,7 +191,10 @@ namespace HomeWork_07
                 }
             }
         }
-
+        /// <summary>
+        /// Метод выводящий на экран меню для сохранения данных
+        /// </summary>
+        /// <param name="menu">экемлпяр структуры которая хранит в себе все записи</param>
         static void SaveRecordPage(Menu menu)
         {
             int choise;

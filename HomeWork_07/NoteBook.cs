@@ -14,6 +14,10 @@ namespace HomeWork_07
         /// Массив записей 
         /// </summary>
         private List<Record> Records { get; set; }
+
+        /// <summary>
+        /// Поле указывающее новая записная книга или нет
+        /// </summary>
         private bool newBook { get; }
 
         /// <summary>
@@ -63,7 +67,9 @@ namespace HomeWork_07
             }
                 
         }
-
+        /// <summary>
+        /// Свойство для очистки записей в текущей книге
+        /// </summary>
         public void ClearRecord()
         {
             Records.Clear();
@@ -79,6 +85,11 @@ namespace HomeWork_07
             return result ;
         }
 
+        /// <summary>
+        /// Свойство которое выдает нужную запись
+        /// </summary>
+        /// <param name="counter">Номер записи</param>
+        /// <returns>Запись соответствующую номеру</returns>
         public Record getRecord(int counter)
         {
             return Records[counter];

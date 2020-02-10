@@ -65,7 +65,7 @@ namespace HomeWork_07
         /// </summary>
         public void SaveInFile()
         {
-            using (StreamWriter sw = new StreamWriter(path, false, Encoding.UTF8))
+            using (StreamWriter sw = new StreamWriter(path, false,Encoding.UTF32))
             {
                 sw.WriteLine($"{Titles[0]};{Titles[1]};{Titles[2]};{Titles[3]:yyyy MM dd};{Titles[4]}");
                 foreach (var e in notebook.ExportData())

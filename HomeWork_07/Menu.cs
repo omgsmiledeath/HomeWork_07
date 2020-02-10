@@ -24,11 +24,13 @@ namespace HomeWork_07
         /// <summary>
         /// Путь к файлу
         /// </summary>
-        private string path { get; set; }
+        public string path { get; private set; }
         /// <summary>
         /// поле показывающая созданна эта книга или загруженна
         /// </summary>
         private bool newBook { get; set; }
+
+        
 
         public Menu(string path, bool newBook)
         {
@@ -71,12 +73,12 @@ namespace HomeWork_07
         }
 
 
-        public void SaveInAnotherFile(string path)
+        public void SaveInAnotherFile(string path,bool apend=false)
         {
             while (true)
                 if (File.Exists(path))
                 {
-                    Console.WriteLine(@"По указанному пути есть файл , хотите перезаписать (да\нет)?");
+                    Console.WriteLine(@"По указанному пути есть файл , перезаписать(да)  дописать(нет)?");
                     string temp = Console.ReadLine();
                     if (temp == "да")
                     {
@@ -85,7 +87,8 @@ namespace HomeWork_07
                     }
                     else if(temp == "нет")
                     {
-                        Console.WriteLine("Файл не сохранен");
+                        createDir(path,true);
+
                         break;
                     }
                     else
@@ -100,17 +103,20 @@ namespace HomeWork_07
                 }
         }
 
-        private void createDir(string path)
+        private void createDir(string path,bool append = false)
         {
             this.path = path;
-            FileInfo fi = new FileInfo(this.path);
+            FileInfo fi = new FileInfo(path);
             DirectoryInfo di = new DirectoryInfo(fi.DirectoryName);
             di.Create();
-            using (StreamWriter sr = fi.CreateText()) ;
+            if (append == false)
+                using (StreamWriter sr = fi.CreateText()) ;
+            else
+                using (StreamWriter sr = fi.AppendText()) ;
             SaveInFile();
         }
 
-        public void Import()
+        public void Import(int met,DateTime? min = null  ,DateTime? max = null)
         {
             string path = String.Empty;
             while (true)
@@ -120,7 +126,9 @@ namespace HomeWork_07
                 Console.WriteLine(File.Exists(path));
                 if (File.Exists(path))
                 {
+                    if (met==1)
                     notebook.InputData(inputRecords(path));
+                    else notebook.InputData(inputRecordsWithOption(path,min,max));
                     break;
                 }
                 else
@@ -130,6 +138,25 @@ namespace HomeWork_07
 
             }
 
+        }
+
+
+
+
+        private List<Record> inputRecordsWithOption(string path,DateTime? min ,DateTime? max)
+        {
+            List<Record> result = new List<Record>();
+            using (StreamReader sr = new StreamReader(path))
+            {
+                Titles = sr.ReadLine().Split(';');
+                while (!sr.EndOfStream)
+                {
+                    string[] temp = sr.ReadLine().Split(';');
+                    if ((Convert.ToDateTime(temp[3]) >= min) && (Convert.ToDateTime(temp[3]) <= max))
+                    result.Add(new Record(temp[0], Int32.Parse(temp[1]), temp[2], Convert.ToDateTime(temp[3]), temp[4]));
+                }
+            }
+            return result;
         }
 
         private List<Record> inputRecords(string path)

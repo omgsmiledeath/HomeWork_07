@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+
 using System.Text;
 
 namespace HomeWork_07
@@ -155,6 +155,28 @@ namespace HomeWork_07
                 Console.Write($"{Titles[4]}: {e.RecordOwner} \n");
                 Console.WriteLine("-------------------------------------------");
             }
+        }
+
+        public void DeleteRecord()
+        {
+            int count;
+            while(true)
+            {
+                Console.Write("Введите номер записи который хотите удалить:");
+                if(Int32.TryParse(Console.ReadLine(),out count))
+                {
+                    if(count>notebook.ExportData().Count)
+                    {
+                        Console.WriteLine($"записи {count} не существует");
+                    }
+                    else
+                    {
+                        notebook.Delete(count-1);   
+                        break;
+                    }
+                }
+            }
+            
         }
     }
 }

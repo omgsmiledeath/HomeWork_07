@@ -39,15 +39,20 @@ namespace HomeWork_07
 
             Menu menu = new Menu(path, false);
 
-            menu.notebook.Add(new Record("досвидания", "очень", "бла бла бла", new DateTime(2020, 02, 02), "1"));
-            menu.notebook.Add(new Record("Привет", "очень", "бла бла бла", new DateTime(2020, 02, 02), "1"));
-            menu.notebook.Add(new Record("Привет", "очень", "бла бла бла", new DateTime(2020, 02, 02), "1"));
-            menu.notebook.Add(new Record("Привет", "очень", "бла бла бла", new DateTime(2020, 02, 02), "1"));
-            menu.notebook.Add(new Record("Привет", "очень", "бла бла бла", new DateTime(2020, 02, 02), "1"));
+            //menu.notebook.Add(new Record("досвидания", "очень", "бла бла бла", new DateTime(2020, 02, 02), "1"));
+            //menu.notebook.Add(new Record("Привет", "очень", "бла бла бла", new DateTime(2020, 02, 02), "1"));
+            //menu.notebook.Add(new Record("Привет", "очень", "бла бла бла", new DateTime(2020, 02, 02), "1"));
+            //menu.notebook.Add(new Record("Привет", "очень", "бла бла бла", new DateTime(2020, 02, 02), "1"));
+            
             //menu.Import();
             //menu.SaveInFile();
-            menu.SaveInAnotherFile(@"C:\temp\save.csv");
+            menu.notebook.Add(new Record("Привет", "очень", "удали меня", new DateTime(2020, 02, 02), "1"));
+            menu.notebook.Add(new Record("Привет", "очень", "бла бла бла", new DateTime(2020, 02, 02), "1"));
             menu.PrintNBinConsole();
+            menu.DeleteRecord();
+            menu.PrintNBinConsole();
+            menu.SaveInAnotherFile(@"C:\temp\save.csv");
+            
             Console.ReadKey();
         }
     }

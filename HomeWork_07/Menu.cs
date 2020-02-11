@@ -18,7 +18,7 @@ namespace HomeWork_07
         /// <summary>
         /// Поле хранящее экземлпяр записной книги
         /// </summary>
-        public NoteBook notebook { get; }
+        public NoteBook notebook { get; private set; }
         /// <summary>
         /// Поле показывающее были ли сохранены изменения
         /// </summary>
@@ -367,40 +367,33 @@ namespace HomeWork_07
         /// </summary>
         public void SortRecords()
         {
-            List<Record> temp = new List<Record>();
-            temp = notebook.ExportData();
-            notebook.ClearRecord();
             bool flag = false;
             while (flag == false)
             {
-                Console.WriteLine("Введите номера пункта у записи по которому хотите сортировать");
+                Console.WriteLine("Введите номера пункта у записи по которому хотите сортировать\n " +
+                    "1.По заголовку 2.По важности 3.По тексту 4.По дате 5.По имени");
                 int count;
                 Int32.TryParse(Console.ReadLine(), out count);
                 switch (count)
                 {
                     case 1:
-                        temp.Sort((a, b) => a.Title.CompareTo(b.Title));
-                        notebook.InputData(temp);
+                        notebook.SortByTitle();
                         flag = true;
                         break;
                     case 2:
-                        temp.Sort((a, b) => a.Relevance.CompareTo(b.Relevance));
-                        notebook.InputData(temp);
+                        notebook.SortByRelevance();
                         flag = true;
                         break;
                     case 3:
-                        temp.Sort((a, b) => a.Text.CompareTo(b.Text));
-                        notebook.InputData(temp);
+                        notebook.SortByText();
                         flag = true;
                         break;
                     case 4:
-                        temp.Sort((a, b) => a.WriteDate.CompareTo(b.WriteDate));
-                        notebook.InputData(temp);
+                        notebook.SortByDate();
                         flag = true;
                         break;
                     case 5:
-                        temp.Sort((a, b) => a.RecordOwner.CompareTo(b.RecordOwner));
-                        notebook.InputData(temp);
+                        notebook.SortByOwner();
                         flag = true;
                         break;
                     default:

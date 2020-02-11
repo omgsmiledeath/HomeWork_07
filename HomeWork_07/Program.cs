@@ -11,6 +11,7 @@ namespace HomeWork_07
     {
         static void Main(string[] args)
         {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
             #region Задание
             /// Разработать ежедневник.
             /// В ежедневнике реализовать возможность 
@@ -58,9 +59,23 @@ namespace HomeWork_07
                 }
                 if (choise == 2)
                 {
-                    Console.Write("Введите путь до файла:");
-                    path = Console.ReadLine();
-                    newBook = false;
+                    while (true)
+                    {
+                       
+                        Console.Write("Введите путь до файла:");
+
+                        path = Console.ReadLine();
+                        if (File.Exists(path))
+                            {
+                            newBook = false;
+                            break;
+                            }
+                        else
+                        {
+                            Console.WriteLine("По данному пути файла нет");
+                        }
+                            
+                    }
                     break;
                 }
                 else Console.WriteLine("Ввод не опознан");

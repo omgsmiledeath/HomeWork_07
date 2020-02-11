@@ -2,6 +2,7 @@
 using System.IO;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 
 
@@ -82,7 +83,7 @@ namespace HomeWork_07
         {
             List<Record> result = new List<Record>();
             result.AddRange(Records.ToArray());
-            return result ;
+            return result;
         }
 
         /// <summary>
@@ -93,6 +94,42 @@ namespace HomeWork_07
         public Record getRecord(int counter)
         {
             return Records[counter];
+        }
+
+        public void SortByTitle()
+        {
+            var temp= Records.OrderBy(a => a.Title).ToList();
+            ClearRecord();
+            Records.AddRange(temp.ToArray());
+            
+        }
+
+        public void SortByRelevance()
+        {
+            var temp = Records.OrderBy(a => a.Relevance).ToList();
+            ClearRecord();
+            Records.AddRange(temp.ToArray());
+        }
+
+        public void SortByText()
+        {
+            var temp = Records.OrderBy(a => a.Text).ToList();
+            ClearRecord();
+            Records.AddRange(temp.ToArray());
+        }
+
+        public void SortByDate()
+        {
+            var temp = Records.OrderBy(a => a.WriteDate).ToList();
+            ClearRecord();
+            Records.AddRange(temp.ToArray());
+        }
+
+        public void SortByOwner()
+        {
+            var temp = Records.OrderBy(a => a.RecordOwner).ToList();
+            ClearRecord();
+            Records.AddRange(temp.ToArray());
         }
     }
 }
